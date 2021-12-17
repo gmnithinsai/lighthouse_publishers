@@ -8,6 +8,7 @@ import os
 import json
 import pdfkit
 import stripe
+import base64
 
 buplishable_key ='pk_test_MaILxTYQ15v5Uhd6NKI9wPdD00qdL0QZSl'
 stripe.api_key ='sk_test_9JlhVB6qwjcRdYzizjdwgIo0Dt00N55uxbWy'
@@ -40,7 +41,9 @@ def thanks():
 def customer_register():
     form = CustomerRegisterForm()
     if form.validate_on_submit():
-        hash_password = bcrypt.generate_password_hash(form.password.data)
+        password = form.password.data
+        hashpassword = password.encode("utf-8")
+        hash_password = str(base64.b64encode(hashpassword))[2:-1]
         register = Register(name=form.name.data, username=form.username.data, email=form.email.data,password=hash_password,country=form.country.data, city=form.city.data,contact=form.contact.data, address=form.address.data, zipcode=form.zipcode.data)
         db.session.add(register)
         flash(f'Welcome {form.name.data} Thank you for registering', 'success')
@@ -53,9 +56,12 @@ def customer_register():
 def customerLogin():
     form = CustomerLoginFrom()
     if form.validate_on_submit():
-        user = Register.query.filter_by(email=form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user)
+        register_user = Register.query.filter_by(email=form.email.data).first_or_404()
+        y = base64.b64decode(register_user.password)
+        print(y)
+        y = str(y, 'utf-8')
+        if register_user and  y == form.password.data:
+            login_user(register_user)
             flash('You are login now!', 'success')
             next = request.args.get('next')
             return redirect(next or url_for('home'))

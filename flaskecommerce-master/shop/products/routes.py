@@ -15,8 +15,10 @@ def categories():
     return categories
 
 
-
 @app.route('/')
+def homepage():
+    return render_template('customer/homepage.html')
+@app.route('/home')
 def home():
     page = request.args.get('page',1, type=int)
     products = Addproduct.query.filter(Addproduct.stock > 0).order_by(Addproduct.id.desc()).paginate(page=page, per_page=8)

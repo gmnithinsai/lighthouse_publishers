@@ -10,7 +10,7 @@
                 <th>Sr</th>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Color</th>
+                <th>Language</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Discount</th>
@@ -28,7 +28,7 @@
                     <form action="{{url_for('updatecart', code=key)}}" method="post">
                     <td>
                         {% set colors = product.colors.split(',') %}
-                        <label for="colors">Colors: </label>
+                        <label for="colors">Language: </label>
                         <select name="color" id="color">
                             <option value="{{product.color}}" style="display: none;">{{product.color|capitalize}}</option>
                             {% for color in colors %}

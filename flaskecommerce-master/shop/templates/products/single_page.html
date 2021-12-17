@@ -25,7 +25,7 @@
                 <label for="quantity">Quantity: </label>
                 <input type="number" name="quantity" value="1" min="1" max="{{product.stock}}">
                 {% set colors = product.colors.split(',') %}
-                <label for="colors">Colors: </label>
+                <label for="colors">Language: </label>
                 <select name="colors" id="colors">
                     {% for color in colors %}
                     {% set col = color.split(':') %}

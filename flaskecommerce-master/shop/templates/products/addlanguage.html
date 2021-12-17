@@ -3,7 +3,7 @@
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('admin')}}">Navbar</a>
+        <a class="navbar-language" href="{{url_for('admin')}}">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,7 +13,7 @@
               <a class="nav-link" href="{{url_for('admin')}}">product <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('brands')}}">brand</a>
+              <a class="nav-link" href="{{url_for('languages')}}">language</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('categories')}}">catgory</a>
@@ -24,7 +24,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{{url_for('addproduct')}}">Add product</a>
-                <a class="dropdown-item" href="{{url_for('addbrand')}}">add brand</a>
+                <a class="dropdown-item" href="{{url_for('addlanguage')}}">add language</a>
                 <a class="dropdown-item" href="{{url_for('addcat')}}">add category</a>
               </div>
             </li>
@@ -40,17 +40,17 @@
         <div class="col-md-3"></div>
             <div class="col-md-6">
                 {% include '_messages.html' %}
-                {% if brands %}
-                <div class="text-center  p-2 h3 mb-3">{% if updatebrand %} Update {% else %}Add a {% endif %} brand</div>     
+                {% if languages %}
+                <div class="text-center  p-2 h3 mb-3">{% if updatelanguage %} Update {% else %}Add a {% endif %} language</div>     
                 <form method=post>
                 <div>
                  <form action="" method="post">
-                     {% if updatebrand %}
-                     <input type="text" name="brand" class="form-control" value="{{updatebrand.name}}">
-                     <input type="submit" value="update brand" class="btn btn-info mt-3">
+                     {% if updatelanguage %}
+                     <input type="text" name="language" class="form-control" value="{{updatelanguage.name}}">
+                     <input type="submit" value="update language" class="btn btn-info mt-3">
                      {% else %}
-                     <input type="text" name="brand" class="form-control">
-                     <input type="submit" value="Add a brand" class="btn btn-info mt-3">
+                     <input type="text" name="language" class="form-control">
+                     <input type="submit" value="Add a language" class="btn btn-info mt-3">
                      {% endif %}
                      
                  </form>

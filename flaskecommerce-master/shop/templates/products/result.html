@@ -20,9 +20,9 @@
                   <input type="hidden" name="product_id" value="{{product.id}}">
                   <button type="submit" class="btn btn-sm btn-warning float-right">Add to Cart</button>
                   <input type="hidden" name="quantity" value="1" min="1" max="20">
-                  {% set colors = product.colors.split(',') %}
-                  <select name="colors" id="colors" style="visibility: hidden;">
-                      {% for color in colors %}
+                  {% set language_type = product.language_type.split(',') %}
+                  <select name="languages" id="languages" style="visibility: hidden;">
+                      {% for color in language_type %}
                       {% set col = color.split(':') %}
                       <option value="{{col[0]}}">{{col[0] | capitalize }}</option>
                       {% endfor %}

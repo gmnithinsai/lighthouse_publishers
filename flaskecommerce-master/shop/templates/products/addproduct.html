@@ -3,7 +3,7 @@
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('admin')}}">Navbar</a>
+        <a class="navbar-language" href="{{url_for('admin')}}">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,10 +13,10 @@
               <a class="nav-link" href="{{url_for('admin')}}">product <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('brands')}}">brand</a>
+              <a class="nav-link" href="{{url_for('languages')}}">language</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('categories')}}">catgory</a>
+              <a class="nav-link" href="{{url_for('categories')}}">category</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,8 +24,8 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{{url_for('addproduct')}}">Add product</a>
-                <a class="dropdown-item" href="{{url_for('addbrand')}}">add brand</a>
-                <a class="dropdown-item" href="{{url_for('addcat')}}">add category</a>
+                <a class="dropdown-item" href="{{url_for('addlanguage')}}">Add language</a>
+                <a class="dropdown-item" href="{{url_for('addcat')}}">Add category</a>
               </div>
             </li>
           </ul>
@@ -47,17 +47,17 @@
                     {{ render_field(form.price, class="form-control") }}
                     {{ render_field(form.discount, class="form-control") }}
                     {{ render_field(form.stock, class="form-control") }}
-                    <label for="brand">Add a brand</label>
-                    <select name="brand" id="brand" class="form-control" required>
+                    <label for="language">Add a language</label>
+                    <select name="language" id="language" class="form-control" required>
                         {% if getproduct %}
-                        <option value="{{getproduct.brand_id}}" style="display: none;">{{getproduct.brand.name}}</option>
-                        {% for brand in brands %}
-                        <option value="{{brand.id}}">{{brand.name}}</option>
+                        <option value="{{getproduct.language_id}}" style="display: none;">{{getproduct.language.name}}</option>
+                        {% for language in languages %}
+                        <option value="{{language.id}}">{{language.name}}</option>
                         {% endfor %}
                        {% else %}
-                     <option value=""> Select A brand</option>
-                     {% for brand in brands %}
-                     <option value="{{brand.id}}">{{brand.name}}</option>
+                     <option value=""> Select A language</option>
+                     {% for language in languages %}
+                     <option value="{{language.id}}">{{language.name}}</option>
                      {% endfor %}
                      {% endif %}
                     </select>

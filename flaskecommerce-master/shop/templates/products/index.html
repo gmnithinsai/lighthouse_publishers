@@ -3,8 +3,8 @@
 {% include 'navbar.html' %}
 <div class="container">
     <div class="row">
-        {% if brand %}
-         {% for b in brand.items %}
+        {% if language %}
+         {% for b in language.items %}
         <div class="col-md-3 mt-4">
             <div class="card">
                 <img src="{{url_for('static', filename='images/' + b.image_1)}}" class="card-img-top" alt="{{b.name}}" height="200" width="200">
@@ -37,24 +37,24 @@
     
     <div class="row mt-4">
       <div class="col text-center">
-        {% if brand.has_prev %}
-          <a href="{{url_for('get_brand',id=get_brand.id, page=brand.prev_num)}}"class="btn btn-sm btn-outline-info">previus</a>
+        {% if language.has_prev %}
+          <a href="{{url_for('get_language',id=get_language.id, page=language.prev_num)}}"class="btn btn-sm btn-outline-info">previus</a>
         {% endif %}
-        {% if brand.total > 8 %}
-       {% for page_num in brand.iter_pages(left_edge=1, right_edge=2, left_current=1,right_current=2) %}
+        {% if language.total > 8 %}
+       {% for page_num in language.iter_languages(left_edge=1, right_edge=2, left_current=1,right_current=2) %}
        {% if page_num %}
-         {% if brand.page == page_num %}
-         <a href="{{url_for('get_brand',id=get_brand.id, page=page_num)}}" class="btn btn-sm btn-info">{{page_num}}</a>
+         {% if language.page == page_num %}
+         <a href="{{url_for('get_language',id=get_language.id, page=page_num)}}" class="btn btn-sm btn-info">{{page_num}}</a>
          {% else %}
-         <a href="{{url_for('get_brand',id=get_brand.id, page=page_num)}}" class="btn btn-sm btn-outline-info">{{page_num}}</a>
+         <a href="{{url_for('get_language',id=get_language.id, page=page_num)}}" class="btn btn-sm btn-outline-info">{{page_num}}</a>
           {% endif %}
         {% else %}
         ...
         {% endif %}
        {% endfor %}
        {% endif %}
-       {% if brand.has_next %}
-       <a href="{{url_for('get_brand',id=get_brand.id, page=brand.next_num)}}"class="btn btn-sm btn-outline-info">next</a>
+       {% if language.has_next %}
+       <a href="{{url_for('get_language',id=get_language.id, page=language.next_num)}}"class="btn btn-sm btn-outline-info">next</a>
      {% endif %}
       </div>
     </div>
@@ -99,7 +99,7 @@
             <a href="{{url_for('get_category',id=get_cat.id, page=get_cat_prod.prev_num)}}"class="btn btn-sm btn-outline-info">previus</a>
           {% endif %}
           {% if get_cat_prod.total > 8 %}
-         {% for page_num in get_cat_prod.iter_pages(left_edge=1, right_edge=2, left_current=1,right_current=2) %}
+         {% for page_num in get_cat_prod.iter_languages(left_edge=1, right_edge=2, left_current=1,right_current=2) %}
          {% if page_num %}
            {% if get_cat_prod.page == page_num %}
            <a href="{{url_for('get_category',id=get_cat.id, page=page_num)}}" class="btn btn-sm btn-info">{{page_num}}</a>
@@ -156,7 +156,7 @@
             <a href="{{url_for('home', page=products.prev_num)}}"class="btn btn-sm btn-outline-info">previus</a>
           {% endif %}
           {% if products.total> 8 %}
-         {% for page_num in products.iter_pages(left_edge=1, right_edge=2, left_current=1,right_current=2) %}
+         {% for page_num in products.iter_languages(left_edge=1, right_edge=2, left_current=1,right_current=2) %}
          {% if page_num %}
            {% if products.page == page_num %}
            <a href="{{url_for('home', page=page_num)}}" class="btn btn-sm btn-info">{{page_num}}</a>
