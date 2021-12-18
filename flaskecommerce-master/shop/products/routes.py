@@ -5,24 +5,27 @@ from .forms import Addproducts
 import secrets
 import os
 
-
+# languages
 def languages():
     languages = Language.query.join(Addproduct, (Language.id == Addproduct.language_id)).all()
     return languages
-
+# categories
 def categories():
     categories = Category.query.join(Addproduct,(Category.id == Addproduct.category_id)).all()
     return categories
 
-
+# enter page for user
 @app.route('/')
 def homepage():
     return render_template('customer/homepage.html')
+
+# page after enter
 @app.route('/home')
 def home():
     page = request.args.get('page',1, type=int)
     products = Addproduct.query.filter(Addproduct.stock > 0).order_by(Addproduct.id.desc()).paginate(page=page, per_page=8)
     return render_template('products/index.html', products=products,languages=languages(),categories=categories())
+
 
 @app.route('/result')
 def result():

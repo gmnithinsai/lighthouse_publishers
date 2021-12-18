@@ -39,6 +39,9 @@ def AddCart():
     finally:
         return redirect(request.referrer)
 
+@app.route('/trialbook')
+def TrialBook():
+    return render_template('products/flipbook.html')
 
 
 @app.route('/carts')

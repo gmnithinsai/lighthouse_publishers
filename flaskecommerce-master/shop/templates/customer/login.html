@@ -3,8 +3,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="text-center bg-info p-2 h4">Login</div>
+            <div class="col-md-6" style="margin-top:190px;padding: 5px;margin-top: 190px;padding: 5px;border: 10px solid #38A3A5;background-color: white;border-radius: 10px;">
+                <img src="/static/images/Lighthouse-Logo.png" alt="Norway">
+                <div style="border-radius: 5px;" class="text-center bg-info p-2 h4">Login</div>
                 {% from "_formhelpers.html" import render_field %}
                 {% include '_messages.html' %}
                 <form method=post>
@@ -13,7 +14,7 @@
                     {{ render_field(form.email, class="form-control") }}
                     {{ render_field(form.password, class="form-control") }}
                 </div>
-                <p><input type="submit" value="Login" class="btn-info">
+                <p><input style="float: right; margin-right: 20px;border-radius: 5px;" type="submit" value="Login" class="btn-info">
                 </form>
             </div>
       <div class="col-md-3"></div>
